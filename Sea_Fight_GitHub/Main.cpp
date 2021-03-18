@@ -7,6 +7,7 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
+	//New Git
 	setlocale(0, "");
 	//Show_Place(place);
 	//cout << endl;
