@@ -290,8 +290,6 @@ char Virtual_Move(char massive_virt[10][10]) {
 		int random_case = 0;
 		do {
 			Virtial_Move_Gorizontal(massive_virt, 0, 1);
-			Show_Place_Virt(massive_virt);
-			cout << endl;
 			one--;
 		} while (one != 0);
 		do {
@@ -300,14 +298,10 @@ char Virtual_Move(char massive_virt[10][10]) {
 			{
 			case 1:
 				Virtial_Move_Gorizontal(massive_virt, 1, 2);
-				Show_Place_Virt(massive_virt);
-				cout << endl;
 				two--;
 				break;
 			case 2:
 				Virtual_Move_Vertical(massive_virt, 1, 2);
-				Show_Place_Virt(massive_virt);
-				cout << endl;
 				two--;
 				break;
 			default:
@@ -320,14 +314,10 @@ char Virtual_Move(char massive_virt[10][10]) {
 			{
 			case 1:
 				Virtial_Move_Gorizontal(massive_virt, 2, 3);
-				Show_Place_Virt(massive_virt);
-				cout << endl;
 				three--;
 				break;
 			case 2:
 				Virtual_Move_Vertical(massive_virt, 2, 3);
-				Show_Place_Virt(massive_virt);
-				cout << endl;
 				three--;
 				break;
 			default:
@@ -340,14 +330,10 @@ char Virtual_Move(char massive_virt[10][10]) {
 			{
 			case 1:
 				Virtial_Move_Gorizontal(massive_virt, 3, 4);
-				Show_Place_Virt(massive_virt);
-				cout << endl;
 				four--;
 				break;
 			case 2:
 				Virtual_Move_Vertical(massive_virt, 3, 4);
-				Show_Place_Virt(massive_virt);
-				cout << endl;
 				four--;
 				break;
 			default:
@@ -356,5 +342,7 @@ char Virtual_Move(char massive_virt[10][10]) {
 		} while (four != 0);
 		count++;
 	} while (count == 0);
+	Show_Place_Virt(massive_virt);
+	cout << endl;
 	return 0;
 }

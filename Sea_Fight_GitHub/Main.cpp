@@ -33,11 +33,12 @@ int main(int argc, char* argv[]) {
 	{'-','-','-','-','-','-','-','-','-','-'},
 	};
 	setlocale(0, "");
-	//Show_Place(place);
-	//cout << endl;
-	Show_Place_Virt(place_virt);
+	Show_Place(place);
 	cout << endl;
+	//Show_Place_Virt(place_virt);
+	//cout << endl;
 	//Player_Move(place);
 	Virtual_Move(place_virt);
+	Player_Kill(place_virt);
 	return 0;
 }
