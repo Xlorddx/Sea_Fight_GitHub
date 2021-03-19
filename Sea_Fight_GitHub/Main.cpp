@@ -39,6 +39,5 @@ int main(int argc, char* argv[]) {
 	//cout << endl;
 	//Player_Move(place);
 	Virtual_Move(place_virt);
-	Player_Kill(place_virt);
 	return 0;
 }

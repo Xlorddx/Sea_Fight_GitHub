@@ -8,4 +8,3 @@ int Vertical(char massive[10][10], int x, int y, int count_ships);
 void Menu(int, int, int, int);
 char Player_Move(char massive[10][10]);
 char Virtual_Move(char massive_virt[10][10]);
-char Player_Kill(char massive_virt[10][10]);
