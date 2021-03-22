@@ -58,7 +58,7 @@ int Vertical(char massive[10][10], int x, int y, int count_ships) {
 	cout << endl;
 	return count_ships;
 }
-char Player_Move(char massive[10][10]) {
+char Player_Move(char massive[10][10]){
 	int count = 0;
 	int one = 4, two = 3, three = 2, four = 1, number;
 	char ch;
@@ -101,5 +101,20 @@ char Player_Move(char massive[10][10]) {
 		if (one == 0 and two == 0 and three == 0 and four == 0) count++;
 	} while (count == 0);
 	cout << "Все ваши корабли кончились. Теперь свои корабли расставляет компьютер!\n";
+	return 0;
+}
+
+char Player_Kill(char massive_virt[10][10]) {
+	int x = 0, y = 0;
+	cout << "Введите координаты:" << endl;
+	cin >> x >> y;
+	if (x == 1 and y == 1) {
+		if (massive_virt[x - 1][y - 1] == 'S' and massive_virt[x - 1][y] == '-' and massive_virt[x][y - 1] == '-') {
+			cout << "Убил!" << endl;
+		}
+		else {
+			cout << "Ранил!";
+		}
+	}
 	return 0;
 }
