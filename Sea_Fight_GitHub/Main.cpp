@@ -3,7 +3,8 @@
 #include <iostream>
 #include <ctime>
 #include <Windows.h>
-#include "Functions.h"
+#include "Functions_Virt.h"
+#include "Functions_Player.h"
 
 using namespace std;
 
@@ -32,15 +33,19 @@ int main(int argc, char* argv[]) {
 	{'-','-','-','-','-','-','-','-','-','-'},
 	{'-','-','-','-','-','-','-','-','-','-'},
 	};
-	int killed_by_player = 0;
+	int killed_by_player = 0, killed_by_virt = 0;
+	int count = 0;
 	setlocale(0, "");
 	Show_Place(place);
 	cout << endl;
-	//Show_Place_Virt(place_virt);
-	//cout << endl;
 	//Player_Move(place);
-	//Sleep(1500);
+	Sleep(1500);
 	Virtual_Move(place_virt);
-	killed_by_player = Player_Kill(place_virt);
+	do {
+		killed_by_player = Player_Shoot(place_virt, killed_by_player);
+		if (killed_by_player == 20) break;
+		killed_by_virt = Virtual_Shoot(place, killed_by_virt);
+		if (killed_by_virt == 20) break;
+	} while (count != -1);
 	return 0;
 }

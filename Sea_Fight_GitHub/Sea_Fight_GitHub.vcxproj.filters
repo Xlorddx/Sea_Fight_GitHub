@@ -26,7 +26,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Functions.h">
+    <ClInclude Include="Functions_Virt.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions_Player.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

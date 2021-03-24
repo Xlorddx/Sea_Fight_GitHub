@@ -1,6 +1,7 @@
 #define  _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <ctime>
+#include "Functions_Player.h"
 
 using namespace std;
 
@@ -342,7 +343,207 @@ char Virtual_Move(char massive_virt[10][10]) {
 		} while (four != 0);
 		count++;
 	} while (count == 0);
-	Show_Place_Virt(massive_virt);
+	//Show_Place_Virt(massive_virt);
 	cout << endl;
 	return 0;
+}
+
+int Virtual_Shoot(char massive[10][10], int count_killed_player_ships) {
+	srand(time(0));
+	int x = 0, y = 0, count = 0;
+	do {
+		x = rand() % 10 + 1;
+		y = rand() % 10 + 1;
+		switch (x)
+		{
+		case 1:
+			switch (y)
+			{
+			case 1:
+				if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == '-' or massive[x][y - 1] == 'X') and (massive[x - 1][y] == '-' or massive[x - 1][y] == 'X')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер убил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == 'S' or massive[x - 1][y] == 'S')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер ранил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else {
+					cout << "Компьютер промахнулся!" << endl << "Теперь ваш ход!" << endl;
+					count = -1;
+				}
+				break;
+			case 2:case 3:case 4:case 5: case 6: case 7: case 8: case 9:
+				if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == '-' or massive[x][y - 1] == 'X') and (massive[x - 1][y] == '-' or massive[x - 1][y] == 'X') and (massive[x - 1][y - 2] == '-' or massive[x - 1][y - 2] == 'X')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер убил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == 'S' or massive[x - 1][y] == 'S' or massive[x - 1][y - 2] == 'S')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер ранил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else {
+					cout << "Компьютер промахнулся!" << endl << "Теперь ваш ход!" << endl;
+					count = -1;
+				}
+				break;
+			case 10:
+				if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == '-' or massive[x][y - 1] == 'X') and (massive[x - 1][y - 2] == '-' or massive[x - 1][y - 2] == 'X')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер убил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == 'S' or massive[x - 1][y - 1] == 'S')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер ранил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else {
+					cout << "Компьютер промахнулся!" << endl << "Теперь ваш ход!" << endl;
+					count = -1;
+				}
+				break;
+			default:
+				break;
+			}
+			break;
+		case 2:case 3:case 4:case 5: case 6: case 7: case 8: case 9:
+			switch (y)
+			{
+			case 1:
+				if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == '-' or massive[x][y - 1] == 'X') and (massive[x - 1][y] == '-' or massive[x - 1][y] == 'X') and (massive[x - 2][y - 1] == '-' or massive[x - 2][y - 1] == 'X')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер убил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == 'S' or massive[x - 1][y] == 'S' or massive[x - 2][y - 1] == 'S')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер ранил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else {
+					cout << "Компьютер промахнулся!" << endl << "Теперь ваш ход!" << endl;
+					count = -1;
+				}
+				break;
+			case 2:case 3:case 4:case 5: case 6: case 7: case 8: case 9:
+				if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == '-' or massive[x][y - 1] == 'X') and (massive[x - 1][y] == '-' or massive[x - 1][y] == 'X') and (massive[x - 1][y - 2] == '-' or massive[x - 1][y - 2] == 'X') and (massive[x - 2][y - 1] == '-' or massive[x - 2][y - 1] == 'X')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер убил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == 'S' or massive[x - 1][y] == 'S' or massive[x - 1][y - 2] == 'S' or massive[x - 2][y - 1] == 'S')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер ранил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else {
+					cout << "Компьютер промахнулся!" << endl << "Теперь ваш ход!" << endl;
+					count = -1;
+				}
+				break;
+			case 10:
+				if (massive[x - 1][y - 1] == 'S' and (massive[x][y - 1] == '-' or massive[x][y - 1] == 'X') and (massive[x - 1][y - 2] == '-' or massive[x - 1][y - 2] == 'X') and (massive[x - 2][y - 1] == '-' or massive[x - 2][y - 1] == 'X')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер убил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else if (massive[x - 1][y - 1] == 'S' and (massive[x - 2][y - 1] == 'S' or massive[x][y - 1] == 'S' or massive[x - 1][y - 2] == 'S')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер ранил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else {
+					cout << "Компьютер промахнулся!" << endl << "Теперь ваш ход!" << endl;
+					count = -1;
+				}
+				break;
+			default:
+				break;
+			}
+			break;
+		case 10:
+			switch (y)
+			{
+			case 1:
+				if (massive[x - 1][y - 1] == 'S' and (massive[x - 1][y] == '-' or massive[x - 1][y] == 'X') and (massive[x - 2][y - 1] == '-' or massive[x - 2][y - 1] == 'X')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер убил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else if (massive[x - 1][y - 1] == 'S' and (massive[x - 1][y] == 'S' or massive[x - 2][y - 1] == 'S')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер ранил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else {
+					cout << "Компьютер промахнулся!" << endl << "Теперь ваш ход!" << endl;
+					count = -1;
+				}
+				break;
+			case 2:case 3:case 4:case 5: case 6: case 7: case 8: case 9:
+				if (massive[x - 1][y - 1] == 'S' and (massive[x - 1][y - 2] == '-' or massive[x - 1][y - 2] == 'X') and (massive[x - 1][y] == '-' or massive[x - 1][y] == 'X') and (massive[x - 2][y - 2] == '-' or massive[x - 2][y - 2] == 'X')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер убил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else if (massive[x - 1][y - 1] == 'S' and (massive[x - 1][y - 2] == 'S' or massive[x - 1][y] == 'S' or massive[x - 2][y - 2] == 'S')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер ранил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else {
+					cout << "Компьютер промахнулся!" << endl << "Теперь ваш ход!" << endl;
+					count = -1;
+				}
+				break;
+			case 10:
+				if (massive[x - 1][y - 1] == 'S' and (massive[x - 2][y - 1] == '-' or massive[x - 2][y - 1] == 'X') and (massive[x - 1][y - 2] == '-' or massive[x - 1][y - 2] == 'X')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер убил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else if (massive[x - 1][y - 1] == 'S' and (massive[x - 2][y - 1] == 'S' or massive[x - 1][y - 2] == 'S')) {
+					massive[x - 1][y - 1] = 'X';
+					Show_Place(massive);
+					cout << "Компьютер ранил ваш корабль!" << endl;
+					count_killed_player_ships++;
+				}
+				else {
+					cout << "Компьютер промахнулся!" << endl << "Теперь ваш ход!" << endl;
+					count = -1;
+				}
+				break;
+			default:
+				break;
+			}
+			break;
+		default:
+			break;
+		}
+		cout << count_killed_player_ships << endl;
+		if (count_killed_player_ships == 20) count = -1;
+	} while (count != -1);
+	return count_killed_player_ships;
 }
