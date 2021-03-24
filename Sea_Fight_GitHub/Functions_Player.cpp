@@ -5,11 +5,14 @@
 using namespace std;
 
 char Show_Place(char massive[10][10]) {
-	int i, j;
+	int i, j, numb = 1;;
+	cout << "\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10" << endl;
 	for (i = 0; i < 10; i++) {
+		cout << numb << "\t";
 		for (j = 0; j < 10; j++) {
 			cout << massive[i][j] << "\t";
 		}
+		numb++;
 		cout << endl;
 	}
 	return 0;
@@ -104,8 +107,10 @@ char Player_Move(char massive[10][10]){
 	return 0;
 }
 
+
+
 char Player_Kill(char massive_virt[10][10]) {
-	int x = 0, y = 0, count = 0, z = 0, count_killed_virt_ships = 0;
+	int x = 0, y = 0, count = 0, z = 0, count_killed_virt_ships = 0, k = 0;
 	do {
 		cout << "Введите координаты:" << endl;
 		cin >> x >> y;
@@ -115,11 +120,15 @@ char Player_Kill(char massive_virt[10][10]) {
 			switch (y)
 			{
 			case 1:
-				if (massive_virt[x - 1][y - 1] == 'S' and massive_virt[x][y - 1] == '-' and massive_virt[x - 1][y] == '-') {
+				if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == '-' or massive_virt[x][y - 1] == 'X') and (massive_virt[x - 1][y] == '-' or massive_virt[x - 1][y] == 'X')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Убил!" << endl;
 					count_killed_virt_ships++;
 				}
 				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == 'S' or massive_virt[x - 1][y] == 'S')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Ранил!" << endl;
 					count_killed_virt_ships++;
 				}
@@ -129,11 +138,15 @@ char Player_Kill(char massive_virt[10][10]) {
 				}
 				break;
 			case 2:case 3:case 4:case 5: case 6: case 7: case 8: case 9:
-				if (massive_virt[x - 1][y - 1] == 'S' and massive_virt[x][y - 1] == '-' and massive_virt[x - 1][y] == '-' and massive_virt[x-1][y-2] == '-') {
+				if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == '-' or massive_virt[x][y - 1] == 'X') and (massive_virt[x - 1][y] == '-' or massive_virt[x - 1][y] == 'X') and (massive_virt[x - 1][y - 2] == '-' or massive_virt[x - 1][y - 2] == 'X')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Убил!" << endl;
 					count_killed_virt_ships++;
 				}
 				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == 'S' or massive_virt[x - 1][y] == 'S' or massive_virt[x - 1][y - 2] == 'S')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Ранил!" << endl;
 					count_killed_virt_ships++;
 				}
@@ -143,11 +156,15 @@ char Player_Kill(char massive_virt[10][10]) {
 				}
 				break;
 			case 10:
-				if (massive_virt[x - 1][y - 1] == 'S' and massive_virt[x][y - 1] == '-' and massive_virt[x - 1][y - 2] == '-') {
+				if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == '-' or massive_virt[x][y - 1] == 'X') and (massive_virt[x - 1][y - 2] == '-' or massive_virt[x - 1][y - 2] == 'X')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Убил!" << endl;
 					count_killed_virt_ships++;
 				}
 				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == 'S' or massive_virt[x - 1][y - 1] == 'S')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Ранил!" << endl;
 					count_killed_virt_ships++;
 				}
@@ -164,11 +181,15 @@ char Player_Kill(char massive_virt[10][10]) {
 			switch (y)
 			{
 			case 1:
-				if (massive_virt[x - 1][y - 1] == 'S' and massive_virt[x - 2][y - 1] == '-' and massive_virt[x][y - 1] == '-' and massive_virt[x - 1][y] == '-') {
+				if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == '-' or massive_virt[x][y - 1] == 'X') and (massive_virt[x - 1][y] == '-' or massive_virt[x - 1][y] == 'X') and (massive_virt[x - 2][y - 1] == '-' or massive_virt[x - 2][y - 1] == 'X')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Убил!" << endl;
 					count_killed_virt_ships++;
 				}
-				else if (massive_virt[x-1][y-1] == 'S' and (massive_virt[x - 2][y - 1] == 'S' or massive_virt[x][y - 1] == 'S' or massive_virt[x - 1][y] == 'S')) {
+				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == 'S' or massive_virt[x - 1][y] == 'S' or massive_virt[x - 2][y - 1] == 'S')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Ранил!" << endl;
 					count_killed_virt_ships++;
 				}
@@ -178,11 +199,15 @@ char Player_Kill(char massive_virt[10][10]) {
 				}
 				break;
 			case 2:case 3:case 4:case 5: case 6: case 7: case 8: case 9:
-				if (massive_virt[x - 1][y - 1] == 'S' and massive_virt[x - 2][y - 1] == '-' and massive_virt[x][y - 1] == '-' and massive_virt[x - 1][y] == '-' and massive_virt[x-1][y-2] == '-') {
+				if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == '-' or massive_virt[x][y - 1] == 'X') and (massive_virt[x - 1][y] == '-' or massive_virt[x - 1][y] == 'X') and (massive_virt[x - 1][y - 2] == '-' or massive_virt[x - 1][y - 2] == 'X') and (massive_virt[x - 2][y - 1] == '-' or massive_virt[x - 2][y - 1] == 'X')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Убил!" << endl;
 					count_killed_virt_ships++;
 				}
-				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x - 2][y - 1] == 'S' or massive_virt[x][y - 1] == 'S' or massive_virt[x - 1][y] == 'S' or massive_virt[x - 1][y - 2] == 'S')) {
+				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == 'S' or massive_virt[x - 1][y] == 'S' or massive_virt[x - 1][y - 2] == 'S' or massive_virt[x - 2][y - 1] == 'S')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Ранил!" << endl;
 					count_killed_virt_ships++;
 				}
@@ -192,11 +217,15 @@ char Player_Kill(char massive_virt[10][10]) {
 				}
 				break;
 			case 10:
-				if (massive_virt[x - 1][y - 1] == 'S' and massive_virt[x - 2][y - 1] == '-' and massive_virt[x][y - 1] == '-' and massive_virt[x - 1][y - 2] == '-') {
+				if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == '-' or massive_virt[x][y - 1] == 'X') and (massive_virt[x - 1][y - 2] == '-' or massive_virt[x - 1][y - 2] == 'X') and (massive_virt[x - 2][y - 1] == '-' or massive_virt[x - 2][y - 1] == 'X')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Убил!" << endl;
 					count_killed_virt_ships++;
 				}
 				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x - 2][y - 1] == 'S' or massive_virt[x][y - 1] == 'S' or massive_virt[x - 1][y - 2] == 'S')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Ранил!" << endl;
 					count_killed_virt_ships++;
 				}
@@ -213,11 +242,15 @@ char Player_Kill(char massive_virt[10][10]) {
 			switch (y)
 			{
 			case 1:
-				if (massive_virt[x - 1][y - 1] == 'S' and massive_virt[x - 2][y - 1] == '-' and massive_virt[x - 1][y] == '-') {
+				if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x - 1][y] == '-' or massive_virt[x - 1][y] == 'X') and (massive_virt[x - 2][y - 1] == '-' or massive_virt[x - 2][y - 1] == 'X')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Убил!" << endl;
 					count_killed_virt_ships++;
 				}
-				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x - 2][y - 1] == 'S' or massive_virt[x - 1][y] == 'S')) {
+				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x - 1][y] == 'S' or massive_virt[x - 2][y - 1] == 'S')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Ранил!" << endl;
 					count_killed_virt_ships++;
 				}
@@ -227,11 +260,15 @@ char Player_Kill(char massive_virt[10][10]) {
 				}
 				break;
 			case 2:case 3:case 4:case 5: case 6: case 7: case 8: case 9:
-				if (massive_virt[x - 1][y - 1] == 'S' and massive_virt[x-1][y - 2] == '-' and massive_virt[x - 1][y] == '-' and massive_virt[x - 2][y - 2] == '-') {
+				if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x - 1][y - 2] == '-' or massive_virt[x - 1][y - 2] == 'X') and (massive_virt[x - 1][y] == '-' or massive_virt[x - 1][y] == 'X') and (massive_virt[x - 2][y - 2] == '-' or massive_virt[x - 2][y - 2] == 'X')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Убил!" << endl;
 					count_killed_virt_ships++;
 				}
 				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x - 1][y - 2] == 'S' or massive_virt[x - 1][y] == 'S' or massive_virt[x - 2][y - 2] == 'S')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Ранил!" << endl;
 					count_killed_virt_ships++;
 				}
@@ -241,11 +278,15 @@ char Player_Kill(char massive_virt[10][10]) {
 				}
 				break;
 			case 10:
-				if (massive_virt[x - 1][y - 1] == 'S' and massive_virt[x - 2][y - 1] == '-' and massive_virt[x - 1][y - 2] == '-') {
+				if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x - 2][y - 1] == '-' or massive_virt[x - 2][y - 1] == 'X') and (massive_virt[x - 1][y - 2] == '-' or massive_virt[x - 1][y - 2] == 'X')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Убил!" << endl;
 					count_killed_virt_ships++;
 				}
 				else if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x - 2][y - 1] == 'S' or massive_virt[x - 1][y - 2] == 'S')) {
+					massive_virt[x - 1][y - 1] = 'X';
+					Show_Place(massive_virt);
 					cout << "Ранил!" << endl;
 					count_killed_virt_ships++;
 				}
@@ -261,6 +302,8 @@ char Player_Kill(char massive_virt[10][10]) {
 		default:
 			break;
 		}
+		cout << count_killed_virt_ships << endl;
+		if (count_killed_virt_ships == 20) count = -1;
 	} while (count != -1);
-	return 0;
+	return count_killed_virt_ships;
 }

@@ -8,7 +8,6 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-	//New Git
 	char place[10][10] = {
 		{'-','-','-','-','-','-','-','-','-','-'},
 		{'-','-','-','-','-','-','-','-','-','-'},
@@ -33,14 +32,15 @@ int main(int argc, char* argv[]) {
 	{'-','-','-','-','-','-','-','-','-','-'},
 	{'-','-','-','-','-','-','-','-','-','-'},
 	};
+	int killed_by_player = 0;
 	setlocale(0, "");
 	Show_Place(place);
 	cout << endl;
 	//Show_Place_Virt(place_virt);
 	//cout << endl;
 	//Player_Move(place);
-	Sleep(1500);
+	//Sleep(1500);
 	Virtual_Move(place_virt);
-	Player_Kill(place_virt);
+	killed_by_player = Player_Kill(place_virt);
 	return 0;
 }
