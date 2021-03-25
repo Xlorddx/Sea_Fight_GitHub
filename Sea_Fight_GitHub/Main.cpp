@@ -33,19 +33,37 @@ int main(int argc, char* argv[]) {
 	{'-','-','-','-','-','-','-','-','-','-'},
 	{'-','-','-','-','-','-','-','-','-','-'},
 	};
+	char place_with_x[10][10] = {
+		{'-','-','-','-','-','-','-','-','-','-'},
+		{'-','-','-','-','-','-','-','-','-','-'},
+		{'-','-','-','-','-','-','-','-','-','-'},
+		{'-','-','-','-','-','-','-','-','-','-'},
+		{'-','-','-','-','-','-','-','-','-','-'},
+		{'-','-','-','-','-','-','-','-','-','-'},
+		{'-','-','-','-','-','-','-','-','-','-'},
+		{'-','-','-','-','-','-','-','-','-','-'},
+		{'-','-','-','-','-','-','-','-','-','-'},
+		{'-','-','-','-','-','-','-','-','-','-'},
+	};
 	int killed_by_player = 0, killed_by_virt = 0;
 	int count = 0;
 	setlocale(0, "");
 	Show_Place(place);
 	cout << endl;
-	//Player_Move(place);
+	Player_Move(place);
 	Sleep(1500);
 	Virtual_Move(place_virt);
 	do {
-		killed_by_player = Player_Shoot(place_virt, killed_by_player);
+		killed_by_player = Player_Shoot(place_virt, killed_by_player, place_with_x);
 		if (killed_by_player == 20) break;
 		killed_by_virt = Virtual_Shoot(place, killed_by_virt);
 		if (killed_by_virt == 20) break;
 	} while (count != -1);
+	if (killed_by_player == 20) {
+		cout << "Победил Игрок!" << endl;
+	}
+	else {
+		cout << "Победил Компьютер!" << endl;
+	}
 	return 0;
 }
