@@ -1,7 +1,6 @@
 #pragma once
 
 void Show_Place(char massive[10][10]);
-void Show_Place_With_X(char massive_with_x[10][10]);
 
 void Menu(int, int, int, int);
 

@@ -6,24 +6,12 @@ using namespace std;
 
 void Show_Place(char massive[10][10]) {
 	int i, j, numb = 1;;
-	cout << "\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10" << endl;
+	cout << "    1   2   3   4   5   6   7   8   9   10" << endl;
 	for (i = 0; i < 10; i++) {
-		cout << numb << "\t";
+		if (numb != 10) cout << numb << " | ";
+		else cout << numb << "| ";
 		for (j = 0; j < 10; j++) {
-			cout << massive[i][j] << "\t";
-		}
-		numb++;
-		cout << endl;
-	}
-}
-
-void Show_Place_With_X(char massive_with_x[10][10]) {
-	int i, j, numb = 1;;
-	cout << "\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10" << endl;
-	for (i = 0; i < 10; i++) {
-		cout << numb << "\t";
-		for (j = 0; j < 10; j++) {
-			cout << massive_with_x[i][j] << "\t";
+			cout << massive[i][j] << " | ";
 		}
 		numb++;
 		cout << endl;
@@ -41,6 +29,7 @@ void Menu(int counter_0, int counter_1, int counter_2, int counter_3) {
 }
 int Gorizontal(char massive[10][10], int x, int y, int count_ships) {
 	int string_first, column_first;
+	bool flag = true;
 	cout << "Выберите строку:" << endl;
 	cin >> string_first;
 	cout << "Введите начальный столбик:" << endl;
@@ -48,8 +37,14 @@ int Gorizontal(char massive[10][10], int x, int y, int count_ships) {
 	for (int i = column_first - 1; i < column_first + x; i++) {
 		if (massive[string_first - 1][i] == '-' and column_first != y) massive[string_first - 1][i] = 'K';
 		else {
-			Gorizontal(massive, x, y, count_ships);
+			cout << "Введены неверные координаты!" << endl;
+			flag = false;
+			break;
 		}
+	}
+	if (!flag) {
+		Show_Place(massive);
+		Gorizontal(massive, x, y, count_ships);
 	}
 	count_ships--;
 	Show_Place(massive);
