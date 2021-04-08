@@ -171,6 +171,7 @@ int Player_Shoot(char (*massive_virt)[10], int count_killed_virt_ships, char (*p
 				}
 				else {
 					cout << "Промахнулся!" << endl;
+					place_with_x[x - 1][y - 1] = 'P';
 					count = -1;
 				}
 				break;
@@ -191,6 +192,7 @@ int Player_Shoot(char (*massive_virt)[10], int count_killed_virt_ships, char (*p
 				}
 				else {
 					cout << "Промахнулся!" << endl;
+					place_with_x[x - 1][y - 1] = 'P';
 					count = -1;
 				}
 				break;
@@ -211,6 +213,7 @@ int Player_Shoot(char (*massive_virt)[10], int count_killed_virt_ships, char (*p
 				}
 				else {
 					cout << "Промахнулся!" << endl;
+					place_with_x[x - 1][y - 1] = 'P';
 					count = -1;
 				}
 				break;
@@ -238,6 +241,7 @@ int Player_Shoot(char (*massive_virt)[10], int count_killed_virt_ships, char (*p
 				}
 				else {
 					cout << "Промахнулся!" << endl;
+					place_with_x[x - 1][y - 1] = 'P';
 					count = -1;
 				}
 				break;
@@ -258,6 +262,7 @@ int Player_Shoot(char (*massive_virt)[10], int count_killed_virt_ships, char (*p
 				}
 				else {
 					cout << "Промахнулся!" << endl;
+					place_with_x[x - 1][y - 1] = 'P';
 					count = -1;
 				}
 				break;
@@ -278,6 +283,7 @@ int Player_Shoot(char (*massive_virt)[10], int count_killed_virt_ships, char (*p
 				}
 				else {
 					cout << "Промахнулся!" << endl;
+					place_with_x[x - 1][y - 1] = 'P';
 					count = -1;
 				}
 				break;
@@ -305,6 +311,7 @@ int Player_Shoot(char (*massive_virt)[10], int count_killed_virt_ships, char (*p
 				}
 				else {
 					cout << "Промахнулся!" << endl;
+					place_with_x[x - 1][y - 1] = 'P';
 					count = -1;
 				}
 				break;
@@ -325,6 +332,7 @@ int Player_Shoot(char (*massive_virt)[10], int count_killed_virt_ships, char (*p
 				}
 				else {
 					cout << "Промахнулся!" << endl;
+					place_with_x[x - 1][y - 1] = 'P';
 					count = -1;
 				}
 				break;
@@ -345,6 +353,7 @@ int Player_Shoot(char (*massive_virt)[10], int count_killed_virt_ships, char (*p
 				}
 				else {
 					cout << "Промахнулся!" << endl;
+					place_with_x[x - 1][y - 1] = 'P';
 					count = -1;
 				}
 				break;

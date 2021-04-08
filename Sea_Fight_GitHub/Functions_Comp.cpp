@@ -20,12 +20,14 @@ char Show_Place_Virt(char massive_virt[10][10]) {
 	return 0;
 }
 
-char Virtial_Move_Gorizontal(char (*massive_virt)[10], int x, int y, int check_numb) {
-	int count_1 = 0;
+char Virtial_Check_And_Move(char (*massive_virt)[10], int x, int y, int check_numb) {
+	int count_1 = 0 ;
 	do {
 	int string_i = rand() % 10;
 	int column_j = rand() % 10;
 	int count = 0;
+
+	//cout << string_i << " " << column_j << endl;
 
 	if (string_i == 0) {
 		for (int i = string_i; i < string_i + 2 + check_numb; i++) {
@@ -37,16 +39,18 @@ char Virtial_Move_Gorizontal(char (*massive_virt)[10], int x, int y, int check_n
 						break;
 					}
 				}
+				if (count == 0) break;
 			} 
 			if (column_j > 0 and column_j < 9) {
-				if (check_numb == 0 or ((x == 1 and column_j < 9) or (x == 2 and column_j < 8) or (x == 3 and column_j < 7))) {
-					for (int j = column_j - 1; j < column_j + 1 + x; j++) {
+				if (x == 0 or ((x == 1 and column_j < 9) or (x == 2 and column_j < 8) or (x == 3 and column_j < 7))) {
+					for (int j = column_j - 1; j < column_j + 2 + x; j++) {
 						if (massive_virt[i][j] == '-') count++;
 						else {
 							count = 0;
 							break;
 						}
 					}
+					if (count == 0) break;
 				}
 				else {
 					break;
@@ -60,12 +64,13 @@ char Virtial_Move_Gorizontal(char (*massive_virt)[10], int x, int y, int check_n
 						break;
 					}
 				}
+				if (count == 0) break;
 			}
 		}
 	}
 
 	if (string_i > 0 and string_i < 9) {
-		for (int i = string_i; i < string_i + 2 + check_numb; i++) {
+		for (int i = string_i - 1; i < string_i + 2 + check_numb; i++) {
 			if (column_j == 0) {
 				for (int j = column_j; j < column_j + 2 + x; j++) {
 					if (massive_virt[i][j] == '-') count++;
@@ -74,16 +79,18 @@ char Virtial_Move_Gorizontal(char (*massive_virt)[10], int x, int y, int check_n
 						break;
 					}
 				}
+				if (count == 0) break;
 			}
 			if (column_j > 0 and column_j < 9) {
-				if (check_numb == 0 or ((x == 1 and column_j < 9) or (x == 2 and column_j < 8) or (x == 3 and column_j < 7))) {
-					for (int j = column_j - 1; j < column_j + 1 + x; j++) {
+				if (x == 0 or ((x == 1 and column_j < 9) or (x == 2 and column_j < 8) or (x == 3 and column_j < 7))) {
+					for (int j = column_j - 1; j < column_j + 2 + x; j++) {
 						if (massive_virt[i][j] == '-') count++;
 						else {
 							count = 0;
 							break;
 						}
 					}
+					if (count == 0) break;
 				}
 				else {
 					break;
@@ -97,42 +104,51 @@ char Virtial_Move_Gorizontal(char (*massive_virt)[10], int x, int y, int check_n
 						break;
 					}
 				}
+				if (count == 0) break;
 			}
 		}
 	}
 
 	if (string_i == 9) {
-		for (int i = string_i; i < string_i + 2 + check_numb; i++) {
-			if (column_j == 0) {
-				for (int j = column_j; j < column_j + 2 + x; j++) {
-					if (massive_virt[i][j] == '-') count++;
-					else {
-						count = 0;
-						break;
-					}
-				}
-			}
-			if (column_j > 0 and column_j < 9) {
-				if (check_numb == 0 or ((x == 1 and column_j < 9) or (x == 2 and column_j < 8) or (x == 3 and column_j < 7))) {
-					for (int j = column_j - 1; j < column_j + 1 + x; j++) {
+		if (check_numb != 0) {
+			continue;
+		}
+		else {
+			for (int i = string_i - 1; i < string_i + 2 + check_numb; i++) {
+				if (column_j == 0) {
+					for (int j = column_j; j < column_j + 2 + x; j++) {
 						if (massive_virt[i][j] == '-') count++;
 						else {
 							count = 0;
 							break;
 						}
 					}
+					if (count == 0) break;
 				}
-				else {
-					break;
-				}
-			}
-			if (x == 0 and column_j == 9) {
-				for (int j = column_j - 1; j < column_j + 1; j++) {
-					if (massive_virt[i][j] == '-') count++;
+				if (column_j > 0 and column_j < 9) {
+					if (x == 0 or ((x == 1 and column_j < 9) or (x == 2 and column_j < 8) or (x == 3 and column_j < 7))) {
+						for (int j = column_j - 1; j < column_j + 2 + x; j++) {
+							if (massive_virt[i][j] == '-') count++;
+							else {
+								count = 0;
+								break;
+							}
+						}
+						if (count == 0) break;
+					}
 					else {
-						count = 0;
 						break;
 					}
+				}
+				if (x == 0 and column_j == 9) {
+					for (int j = column_j - 1; j < column_j + 1; j++) {
+						if (massive_virt[i][j] == '-') count++;
+						else {
+							count = 0;
+							break;
+						}
+					}
+					if (count == 0) break;
 				}
 			}
 		}
@@ -200,7 +216,7 @@ char Virtual_Move(char(*massive_virt)[10]) {
 	do {
 		int random_case = 0;
 		do {
-			Virtial_Move_Gorizontal(massive_virt, 0, 1, 0);
+			Virtial_Check_And_Move(massive_virt, 0, 1, 0);
 			Show_Place_Virt(massive_virt);
 			cout << endl;
 			one--;
@@ -210,13 +226,13 @@ char Virtual_Move(char(*massive_virt)[10]) {
 			switch (random_case)
 			{
 			case 1:
-				Virtial_Move_Gorizontal(massive_virt, 1, 2, 0);
+				Virtial_Check_And_Move(massive_virt, 1, 2, 0);
 				Show_Place_Virt(massive_virt);
 				cout << endl;
 				two--;
 				break;
 			case 2:
-				Virtial_Move_Gorizontal(massive_virt, 0, 2, 1);
+				Virtial_Check_And_Move(massive_virt, 0, 2, 1);
 				Show_Place_Virt(massive_virt);
 				cout << endl;
 				two--;
@@ -230,13 +246,13 @@ char Virtual_Move(char(*massive_virt)[10]) {
 			switch (random_case)
 			{
 			case 1:
-				Virtial_Move_Gorizontal(massive_virt, 2, 3, 0);
+				Virtial_Check_And_Move(massive_virt, 2, 3, 0);
 				Show_Place_Virt(massive_virt);
 				cout << endl;
 				three--;
 				break;
 			case 2:
-				Virtial_Move_Gorizontal(massive_virt, 0, 3, 2);
+				Virtial_Check_And_Move(massive_virt, 0, 3, 2);
 				Show_Place_Virt(massive_virt);
 				cout << endl;
 				three--;
@@ -250,12 +266,12 @@ char Virtual_Move(char(*massive_virt)[10]) {
 			switch (random_case)
 			{
 			case 1:
-				Virtial_Move_Gorizontal(massive_virt, 3, 4, 0);
+				Virtial_Check_And_Move(massive_virt, 3, 4, 0);
 				Show_Place_Virt(massive_virt);
 				four--;
 				break;
 			case 2:
-				Virtial_Move_Gorizontal(massive_virt, 0, 4, 3);
+				Virtial_Check_And_Move(massive_virt, 0, 4, 3);
 				Show_Place_Virt(massive_virt);
 				four--;
 				break;
