@@ -205,6 +205,7 @@ char Virtial_Check_And_Move(char (*massive_virt)[10], int x, int y, int check_nu
 		} while (count_2 != -1);
 	}
 	if (count_2 == -1) count_1 = -1;
+	if ((count_2 == 0 and x == 3) or (count_2 == 0 and check_numb == 3)) return 1;
 	} while (count_1 != -1);
 	return 0;
 }
@@ -266,15 +267,23 @@ char Virtual_Move(char(*massive_virt)[10]) {
 			switch (random_case)
 			{
 			case 1:
-				Virtial_Check_And_Move(massive_virt, 3, 4, 0);
-				Show_Place_Virt(massive_virt);
-				four--;
-				break;
+				if (Virtial_Check_And_Move(massive_virt, 3, 4, 0) == 1) {
+					break;
+				}
+				else {
+					Show_Place_Virt(massive_virt);
+					four--;
+					break;
+				}
 			case 2:
-				Virtial_Check_And_Move(massive_virt, 0, 4, 3);
-				Show_Place_Virt(massive_virt);
-				four--;
-				break;
+				if (Virtial_Check_And_Move(massive_virt, 0, 4, 3) == 1) {
+					break;
+				}
+				else {
+					Show_Place_Virt(massive_virt);
+					four--;
+					break;
+				}
 			default:
 				break;
 			}
