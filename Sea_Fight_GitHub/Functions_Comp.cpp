@@ -27,8 +27,6 @@ char Virtial_Check_And_Move(char (*massive_virt)[10], int x, int y, int check_nu
 	int column_j = rand() % 10;
 	int count = 0;
 
-	//cout << string_i << " " << column_j << endl;
-
 	if (string_i == 0) {
 		for (int i = string_i; i < string_i + 2 + check_numb; i++) {
 			if (column_j == 0) {
@@ -218,8 +216,6 @@ char Virtual_Move(char(*massive_virt)[10]) {
 		int random_case = 0;
 		do {
 			Virtial_Check_And_Move(massive_virt, 0, 1, 0);
-			Show_Place_Virt(massive_virt);
-			cout << endl;
 			one--;
 		} while (one != 0);
 		do {
@@ -228,14 +224,10 @@ char Virtual_Move(char(*massive_virt)[10]) {
 			{
 			case 1:
 				Virtial_Check_And_Move(massive_virt, 1, 2, 0);
-				Show_Place_Virt(massive_virt);
-				cout << endl;
 				two--;
 				break;
 			case 2:
 				Virtial_Check_And_Move(massive_virt, 0, 2, 1);
-				Show_Place_Virt(massive_virt);
-				cout << endl;
 				two--;
 				break;
 			default:
@@ -248,14 +240,10 @@ char Virtual_Move(char(*massive_virt)[10]) {
 			{
 			case 1:
 				Virtial_Check_And_Move(massive_virt, 2, 3, 0);
-				Show_Place_Virt(massive_virt);
-				cout << endl;
 				three--;
 				break;
 			case 2:
 				Virtial_Check_And_Move(massive_virt, 0, 3, 2);
-				Show_Place_Virt(massive_virt);
-				cout << endl;
 				three--;
 				break;
 			default:
@@ -271,7 +259,6 @@ char Virtual_Move(char(*massive_virt)[10]) {
 					break;
 				}
 				else {
-					Show_Place_Virt(massive_virt);
 					four--;
 					break;
 				}
@@ -280,7 +267,6 @@ char Virtual_Move(char(*massive_virt)[10]) {
 					break;
 				}
 				else {
-					Show_Place_Virt(massive_virt);
 					four--;
 					break;
 				}
@@ -290,7 +276,6 @@ char Virtual_Move(char(*massive_virt)[10]) {
 		} while (four != 0);
 		count++;
 	} while (count == 0);
-	Show_Place_Virt(massive_virt);
 	cout << "Компьютер расставил свои корабли!" << endl << "Игра началась!" << endl << "Ваш ход первый!" << endl;
 	cout << endl;
 	return 0;

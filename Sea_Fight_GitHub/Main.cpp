@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
 		killed_by_player = Player_Shoot(place_virt, killed_by_player, place_with_x);
 		if (killed_by_player == 20) break;
 		killed_by_virt = Virtual_Shoot(place, killed_by_virt);
-		if (killed_by_virt == 20) break;
+		if (killed_by_virt == 20 or killed_by_player == 20) break;
 	} while (count != -1);
 	if (killed_by_player == 20) {
 		cout << "Победил Игрок!" << endl;

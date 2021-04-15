@@ -1,6 +1,7 @@
 #define  _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <ctime>
+#include "windows.h"
 
 using namespace std;
 
@@ -27,50 +28,207 @@ void Menu(int counter_0, int counter_1, int counter_2, int counter_3) {
 	cout << "Четырёхпалубный - 4 (Осталось: " << counter_3 << ");" << endl;
 	cout << "-------------------------------------------------------" << endl;
 }
-int Gorizontal(char massive[10][10], int x, int y, int count_ships) {
-	int string_first, column_first;
+int Check_And_Move(char massive[10][10], int x, int count_ships, int check_numb) {
+	int string_i, column_j;
 	bool flag = true;
 	cout << "Выберите строку:" << endl;
-	cin >> string_first;
+	cin >> string_i;
+	string_i -= 1;
 	cout << "Введите начальный столбик:" << endl;
-	cin >> column_first;
-	for (int i = column_first - 1; i < column_first + x; i++) {
-		if (massive[string_first - 1][i] == '-' and column_first != y) massive[string_first - 1][i] = 'K';
-		else {
+	cin >> column_j;
+	column_j -= 1;
+	int count_1 = 0;
+	int count = 0;
+
+	if (string_i == 0) {
+		for (int i = string_i; i < string_i + 2 + check_numb; i++) {
+			if (column_j == 0) {
+				for (int j = column_j; j < column_j + 2 + x; j++) {
+					if (massive[i][j] == '-') count++;
+					else {
+						count = 0;
+						break;
+					}
+				}
+				if (count == 0) break;
+			}
+			if (column_j > 0 and column_j < 9) {
+				if (x == 0 or ((x == 1 and column_j < 9) or (x == 2 and column_j < 9) or (x == 3 and column_j < 8))) {
+					for (int j = column_j - 1; j < column_j + 1 + x; j++) {
+						if (massive[i][j] == '-') count++;
+						else {
+							count = 0;
+							break;
+						}
+					}
+					if (count == 0) break;
+				}
+				else {
+					break;
+				}
+			}
+			if (x == 0 and column_j == 9) {
+				for (int j = column_j - 1; j < column_j + 1; j++) {
+					if (massive[i][j] == '-') count++;
+					else {
+						count = 0;
+						break;
+					}
+				}
+				if (count == 0) break;
+			}
+		}
+	}
+		if (string_i > 0 and string_i < 9) {
+		for (int i = string_i - 1; i < string_i + check_numb; i++) {
+			if (column_j == 0) {
+				for (int j = column_j; j < column_j + 2 + x; j++) {
+					if (massive[i][j] == '-') count++;
+					else {
+						count = 0;
+						break;
+					}
+				}
+				if (count == 0) break;
+			}
+			if (column_j > 0 and column_j < 9) {
+				if (x == 0 or ((x == 1 and column_j < 9) or (x == 2 and column_j < 9) or (x == 3 and column_j < 8))) {
+					for (int j = column_j - 1; j < column_j + 1 + x; j++) {
+						if (massive[i][j] == '-') count++;
+						else {
+							count = 0;
+							break;
+						}
+					}
+					if (count == 0) break;
+				}
+				else {
+					break;
+				}
+			}
+			if (x == 0 and column_j == 9) {
+				for (int j = column_j - 1; j < column_j + 1; j++) {
+					if (massive[i][j] == '-') count++;
+					else {
+						count = 0;
+						break;
+					}
+				}
+				if (count == 0) break;
+			}
+		}
+	}
+
+	if (string_i == 9) {
+		if (check_numb != 0) {
 			cout << "Введены неверные координаты!" << endl;
-			flag = false;
-			break;
 		}
-	}
-	if (!flag) {
-		Show_Place(massive);
-		Gorizontal(massive, x, y, count_ships);
-	}
-	count_ships--;
-	Show_Place(massive);
-	if (count_ships == 0) cout << "У вас кончился данный тип кораблей!" << endl;
-	cout << endl;
-	return count_ships;
-}
-int Vertical(char massive[10][10], int x, int y, int count_ships) {
-	int column_first, string_first;
-	cout << "Выберите столбик:" << endl;
-	cin >> column_first;
-	cout << "Введите строчку:" << endl;
-	cin >> string_first;
-	for (int i = string_first - 1; i < string_first + x; i++) {
-		if ((massive[i][column_first - 1] == '-') and string_first < y) massive[i][column_first - 1] = 'K';
 		else {
-			cout << "Ошибка..." << endl;
-			Vertical(massive, x, y, count_ships);
+			for (int i = string_i - 1; i < string_i + 1; i++) {
+				if (column_j == 0) {
+					for (int j = column_j; j < column_j + 2 + x; j++) {
+						if (massive[i][j] == '-') count++;
+						else {
+							count = 0;
+							break;
+						}
+					}
+					if (count == 0) break;
+				}
+				if (column_j > 0 and column_j < 9) {
+					if (x == 0 or ((x == 1 and column_j < 9) or (x == 2 and column_j < 9) or (x == 3 and column_j < 8))) {
+						for (int j = column_j - 1; j < column_j + 1 + x; j++) {
+							if (massive[i][j] == '-') count++;
+							else {
+								count = 0;
+								break;
+							}
+						}
+						if (count == 0) break;
+					}
+					else {
+						break;
+					}
+				}
+				if (x == 0 and column_j == 9) {
+					for (int j = column_j - 1; j < column_j + 1; j++) {
+						if (massive[i][j] == '-') count++;
+						else {
+							count = 0;
+							break;
+						}
+					}
+					if (count == 0) break;
+				}
+			}
 		}
 	}
-	count_ships--;
-	Show_Place(massive);
-	if (count_ships == 0) cout << "У вас кончился данный тип кораблей!" << endl;
-	cout << endl;
+
+	int count_2 = 0;
+
+	if (count != 0) {
+		do {
+			if (check_numb == 0) {
+				if (x == 0) {
+					massive[string_i][column_j] = 'K';
+					count_2 = -1;
+				}
+				if (x == 1) {
+					for (int j = column_j; j < column_j + 2; j++) {
+						massive[string_i][j] = 'K';
+					}
+					count_2 = -1;
+				}
+				if (x == 2) {
+					for (int j = column_j; j < column_j + 3; j++) {
+						massive[string_i][j] = 'K';
+					}
+					count_2 = -1;
+				}
+				if (x == 3) {
+					for (int j = column_j; j < column_j + 4; j++) {
+						massive[string_i][j] = 'K';
+					}
+					count_2 = -1;
+				}
+			}
+			else {
+				if (check_numb == 1) {
+					for (int i = string_i; i < string_i + 2; i++) {
+						massive[i][column_j] = 'K';
+					}
+					count_2 = -1;
+				}
+				if (check_numb == 2) {
+					for (int i = string_i; i < string_i + 3; i++) {
+						massive[i][column_j] = 'K';
+					}
+					count_2 = -1;
+				}
+				if (check_numb == 3) {
+					for (int i = string_i; i < string_i + 4; i++) {
+						massive[i][column_j] = 'K';
+					}
+					count_2 = -1;
+				}
+			}
+		} while (count_2 != -1);
+	}
+	if (count_2 == -1) {
+		count_ships--;
+		Show_Place(massive);
+		if (count_ships == 0) cout << "У вас кончился данный тип кораблей!" << endl;
+		cout << endl;
+	}
+	else {
+		cout << "Введены неверные координаты!" << endl;
+		Sleep(1000);
+		system("cls");
+		Show_Place(massive);
+	}
 	return count_ships;
 }
+
 char Player_Move(char (*massive)[10]){
 	int count = 0;
 	int one = 4, two = 3, three = 2, four = 1, number;
@@ -80,7 +238,7 @@ char Player_Move(char (*massive)[10]){
 		cin >> number;
 		if (number == 1) {
 			if (one != 0) {
-				one = Vertical(massive, 0, 11, one);
+				one = Check_And_Move(massive, 0, one, 0);
 			}
 			else {
 				cout << "Вы больше не можете выбирать эти корабли!" << endl << endl;
@@ -92,10 +250,10 @@ char Player_Move(char (*massive)[10]){
 				cout << "Вы хотите поставить его вертикально или горизонтально? Вертикально - v/V, горизонтально - g/G" << endl;
 				cin >> ch;
 				if (ch == 'v' or ch == 'V') {
-					two = Vertical(massive, 1, 10, two);
+					two = Check_And_Move(massive, 0, two, 1);
 				}
 				else if (ch == 'g' or ch == 'G') {
-					two = Gorizontal(massive, 1, 10, two);
+					two = Check_And_Move(massive, 1, two, 0);
 				}
 			}
 			else {
@@ -108,10 +266,10 @@ char Player_Move(char (*massive)[10]){
 				cout << "Вы хотите поставить его вертикально или горизонтально? Вертикально - v/V, горизонтально - g/G" << endl;
 				cin >> ch;
 				if (ch == 'v' or ch == 'V') {
-					three = Vertical(massive, 2, 9, three);
+					three = Check_And_Move(massive, 0, three, 2);
 				}
 				else if (ch == 'g' or ch == 'G') {
-					three = Gorizontal(massive, 2, 9, three);
+					three = Check_And_Move(massive, 2, three, 0);
 				}
 			}
 			else {
@@ -124,10 +282,10 @@ char Player_Move(char (*massive)[10]){
 				cout << "Вы хотите поставить его вертикально или горизонтально? Вертикально - v/V, горизонтально - g/G" << endl;
 				cin >> ch;
 				if (ch == 'v' or ch == 'V') {
-					four = Vertical(massive, 3, 8, four);
+					four = Check_And_Move(massive, 0, four, 3);
 				}
 				else if (ch == 'g' or ch == 'G') {
-					four = Gorizontal(massive, 3, 8, four);
+					four = Check_And_Move(massive, 3, four, 0);
 				}
 			}
 			else {
@@ -155,7 +313,7 @@ int Player_Shoot(char (*massive_virt)[10], int count_killed_virt_ships, char (*p
 			switch (y)
 			{
 			case 1:
-				if (massive_virt[x - 1][y - 1] == 'S' and (massive_virt[x][y - 1] == '-' or massive_virt[x][y - 1] == 'X') and (massive_virt[x - 1][y] == '-' or massive_virt[x - 1][y] == 'X')) {
+				if (massive_virt[x - 1][y - 1] == 'K' and (massive_virt[x][y - 1] == '-' or massive_virt[x][y - 1] == 'X') and (massive_virt[x - 1][y] == '-' or massive_virt[x - 1][y] == 'X')) {
 					place_with_x[x - 1][y - 1] = 'X';
 					massive_virt[x - 1][y - 1] = 'X';
 					Show_Place(place_with_x);
